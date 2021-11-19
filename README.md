@@ -2,16 +2,37 @@
 
 ## 1. getopt
 ```
-
+getopt optstring parameters
+getopt [options] [--] optstring parameters
+getopt [options] -o|--options optstring [options] [--] parameters
 ```
+> **명령어의 옵션을 분석, 파악할 수 있도록 도와주는 함수**
+- _<unistd.h> 헤더파일 필요함_
+- _--output와 같은 긴 옵션을 사용하기 위해서는 getoptlong함수를 이용함_
+ 
+<br/>
 
+> **getopt() 함수의 원형**
+```c
+int getopt(int argc, char * const argv[], const char *optstring);
+```
+- _getopt 함수의 argc와 argv는 main 함수가 받은 값을 그대로 전달받고, 세번째인자인 optstring은 옵션을 전달함_
+- _옵션을 발견하였다면 해당 옵션의 아스키코드 값을 반환하고, 만약 옵션을 발견하지 못했다면 EOF(-1)을 반환함_
+ 
+<br/>
 
-
+> **getopt() 함수와 관련된 전역 변수**
+- _optarg : 옵션 뒤에 별도의 매개변수가 오는 경우 optarg에 저장함_
+- _optind : 인덱스 값으로 파일 이름과 같은 추가적인 매개변수를 받는 경우 이 값을 사용하며, getopt 함수는 한번 호출될때마다 이 값을 업데이트 함_
+- _opterr : 옵션에 문제가 있다면 이 값은 0이 아닌 값이 되며 getopt 함수가 메세지를 표시함_
+- _optopt : 알 수 없는 옵션을 받는 경우 해당 옵션은 여기에 들어가며 getopt의 리턴값은 ‘?’가 됨_
 
 
 ## 2. getopts
-
-
+```
+getopts optstring optname [arg]
+```
+> **getopt의 bash버전**
 
 
 
@@ -41,14 +62,14 @@ sed [OPTION] {script-only-if-no-other-script} [input-file]
 <br/>
 
 > **sed 명령어**
-* p : 출력
+* _p : 출력_
   * _sed p file : 파일 전체 출력_
   * _sed -n 3p file : 3번째 줄만 출력_
   * _sed -n 3,7p file : 3~7번째 줄만 출력_
-* d : 삭제
+* _d : 삭제_
   * _sed 3d file : 3번째 줄만 빼고 출력_
   * _sed /some/d file : some이 포함된 줄만 빼고 출력_
-* s : 치환
+* _s : 치환_
   * _sed s/boy/girl/g file : boy를 girl로 치환_
 
 <br/>

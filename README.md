@@ -1,77 +1,56 @@
 # OSS-HW1
 
-### 1. getopt
+## 1. getopt
 
 
 
----
-### 2. getopts
+## 2. getopts
 
 
 
----
-### 3. sed
+
+## 3. sed
 
 
 
----
-### 4. awk
+
+## 4. awk
+> **파일에서 일치하는 내용을 찾아서 지정한 패턴을 수행 후 출력하는 명령어**
+- 텍스트 파일의 전체 내용 출력
+- 파일의 특정 필드만 출력
+- 특정 필드에 문자열을 추가해서 출력
+- 패턴이 포함된 레코드 출력
+- 특정 필드에 연산 수행 결과 출력
+- 필드 값 비교에 따라 레코드 출력
+
+<br/>
+
 ```
 awk [OPTION...] [awk program] [ARGUMENT...]
 ```
 
+> *OPTION*
+* -F : 필드 구분 문자 지정
+* -f : awk program 파일 경로 지정
+* -v : awk program에서 사용될 특정 variable값 지정
+
 <br/>
 
-> * 파일에서 일치하는 행을 찾아서 지정한 패턴을 수행 후 출력하는 명령어
->>   * 텍스트 파일의 전체 내용 출력
->>   * 파일의 특정 필드만 출력
->>   * 특정 필드에 문자열을 추가해서 출력
->>   * 패턴이 포함된 레코드 출력
->>   * 특정 필드에 연산 수행 결과 출력
->>   * 필드 값 비교에 따라 레코드 출력
+> *awk program*
+* pattern {action}의 형태
+    * patern을 생략하면 : "모든 레코드" 적용
+    * action을 생략하면 : "print" 적용
 
+<br/>
 
-
-
-
-> ***OPTION***
->> -F : 필드 구분 문자 지정\
->> -f : awk program 파일 경로 지정\
->> -v : awk program에서 사용될 특정 variable값 지정
-
-awk program
-pattern { action }
-patern 생략: "모든 레코드" 적용
-action 생략: "print" 적용
-
-|사용 예|명령어 옵션|
-|-|-|
-|파일의 전체 내용 출력	|awk '{ print }' [FILE]|
-|필드 값 출력	|awk '{ print $1 }' [FILE]|
-|필드 값에 임의 문자열을 같이 출력	|awk '{print "STR"$1, "STR"$2}' [FILE]|
-|지정된 문자열을 포함하는 레코드만 출력	|awk '/STR/' [FILE]|
-|특정 필드 값 비교를 통해 선택된 레코드만 출력	|awk '$1 == 10 { print $2 }' [FILE]|
-|특정 필드들의 합 구하기	|awk '{sum += $3} END { print sum }' [FILE]|
-|여러 필드들의 합 구하기|awk '{ for (i=2; i<=NF; i++) total += $i }; END { print "TOTAL : "total }' [FILE]|
-|레코드 단위로 필드 합 및 평균 값 구하기|awk '{ sum = 0 } {sum += ($3+$4+$5) } { print $0, sum, sum/3 }' [FILE]|
-|필드에 연산을 수행한 결과 출력하기|awk '{print $1, $2, $3+2, $4, $5}' [FILE]|
-|레코드 또는 필드의 문자열 길이 검사	|awk ' length($0) > 20' [FILE]|
-|파일에 저장된 awk program 실행	|awk -f [AWK FILE] [FILE]|
-|필드 구분 문자 변경하기	|awk -F ':' '{ print $1 }' [FILE]|
-|awk 실행 결과 레코드 정렬하기	|awk '{ print $0 }' [FILE]|
-|특정 레코드만 출력하기	|awk 'NR == 2 { print $0; exit }' [FILE]|
-|출력 필드 너비 지정하기	|awk '{ printf "%-3s %-8s %-4s %-4s %-4s\n", $1, $2, $3, $4, $5}' [FILE]|
-|필드 중 최대 값 출력	|awk '{max = 0; for (i=3; i<NF; i++) max = ($i > max) ? $i : max ; print max}' [FILE]|
-
-표현식
-
+> *awk program language*\
+`표현식`
     (E),    $n,     ++E,    --E,    E++,    E--,    E^E,    !E,     +E,
     -E,     E*E,    E/E,    E%E,    E+E,    E-E,    E E,    E<E,    E<=E,
     E!=E,   E==E,   E>E,    E>=E,   E~E,    E!-E,   E in array,     (n) in array, 
     E&&E,   E||E,   E1?E2:E3        V^=E,   V%=E,   V*=E,   V/=E,   V+=E,
     V-=E,   V=E
-    
-키워드
+워드
     BEGIN   delete  END     function    in      printf
     break   do      exit    getline     next    return
     continue        else    for         if      print      while
@@ -108,3 +87,23 @@ String Functions :
 Input/Output and General Functions :
     close(expression),          getline                 getline var
     system(expression)
+    
+    
+    |awk 사용 예시|명령어 옵션|
+|-|-|
+|파일의 전체 내용 출력	|awk '{ print }' [FILE]|
+|필드 값 출력	|awk '{ print $1 }' [FILE]|
+|필드 값에 임의 문자열을 같이 출력	|awk '{print "STR"$1, "STR"$2}' [FILE]|
+|지정된 문자열을 포함하는 레코드만 출력	|awk '/STR/' [FILE]|
+|특정 필드 값 비교를 통해 선택된 레코드만 출력	|awk '$1 == 10 { print $2 }' [FILE]|
+|특정 필드들의 합 구하기	|awk '{sum += $3} END { print sum }' [FILE]|
+|여러 필드들의 합 구하기|awk '{ for (i=2; i<=NF; i++) total += $i }; END { print "TOTAL : "total }' [FILE]|
+|레코드 단위로 필드 합 및 평균 값 구하기|awk '{ sum = 0 } {sum += ($3+$4+$5) } { print $0, sum, sum/3 }' [FILE]|
+|필드에 연산을 수행한 결과 출력하기|awk '{print $1, $2, $3+2, $4, $5}' [FILE]|
+|레코드 또는 필드의 문자열 길이 검사	|awk ' length($0) > 20' [FILE]|
+|파일에 저장된 awk program 실행	|awk -f [AWK FILE] [FILE]|
+|필드 구분 문자 변경하기	|awk -F ':' '{ print $1 }' [FILE]|
+|awk 실행 결과 레코드 정렬하기	|awk '{ print $0 }' [FILE]|
+|특정 레코드만 출력하기	|awk 'NR == 2 { print $0; exit }' [FILE]|
+|출력 필드 너비 지정하기	|awk '{ printf "%-3s %-8s %-4s %-4s %-4s\n", $1, $2, $3, $4, $5}' [FILE]|
+|필드 중 최대 값 출력	|awk '{max = 0; for (i=3; i<NF; i++) max = ($i > max) ? $i : max ; print max}' [FILE]|

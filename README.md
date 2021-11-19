@@ -1,10 +1,22 @@
 # OSS-HW1
 
 ## 1. getopt
+```
+
+```
+
+
 
 
 
 ## 2. getopts
+
+
+
+
+
+
+
 
 
 
@@ -30,16 +42,16 @@ sed [OPTION] {script-only-if-no-other-script} [input-file]
 
 > **sed 명령어**
 * p : 출력
-   * 
+  * _sed p file : 파일 전체 출력_
+  * _sed -n 3p file : 3번째 줄만 출력_
+  * _sed -n 3,7p file : 3~7번째 줄만 출력_
 * d : 삭제
-   * 
+  * _sed 3d file : 3번째 줄만 빼고 출력_
+  * _sed /some/d file : some이 포함된 줄만 빼고 출력_
 * s : 치환
-   * 
+  * _sed s/boy/girl/g file : boy를 girl로 치환_
 
-
-
-
-
+<br/>
 
 ## 4. awk
 ```
@@ -120,7 +132,6 @@ Input/Output and General Functions :
 <br/>
 
 > **awk 사용 예시**
-
 
 |예시|명령어 옵션|
 |-|-|

@@ -15,65 +15,66 @@
 
 
 ## 4. awk
-> **파일에서 일치하는 내용을 찾아서 지정한 패턴을 수행 후 출력하는 명령어**
-- 텍스트 파일의 전체 내용 출력
-- 파일의 특정 필드만 출력
-- 특정 필드에 문자열을 추가해서 출력
-- 패턴이 포함된 레코드 출력
-- 특정 필드에 연산 수행 결과 출력
-- 필드 값 비교에 따라 레코드 출력
-
-<br/>
-
 ```
 awk [OPTION...] [awk program] [ARGUMENT...]
 ```
-
-> *OPTION*
-* -F : 필드 구분 문자 지정
-* -f : awk program 파일 경로 지정
-* -v : awk program에서 사용될 특정 variable값 지정
-
-<br/>
-
-> *awk program*
-* pattern {action}의 형태
-    * patern을 생략하면 : "모든 레코드" 적용
-    * action을 생략하면 : "print" 적용
+> **파일에서 일치하는 내용을 찾아서 지정한 패턴을 수행 후 출력하는 명령어**
+- _텍스트 파일의 전체 내용 출력_
+- _파일의 특정 필드만 출력_
+- _특정 필드에 문자열을 추가해서 출력_
+- _패턴이 포함된 레코드 출력_
+- _특정 필드에 연산 수행 결과 출력_
+- _필드 값 비교에 따라 레코드 출력_
 
 <br/>
 
-> *awk program language*\
-`표현식`
-    (E),    $n,     ++E,    --E,    E++,    E--,    E^E,    !E,     +E,
-    -E,     E*E,    E/E,    E%E,    E+E,    E-E,    E E,    E<E,    E<=E,
-    E!=E,   E==E,   E>E,    E>=E,   E~E,    E!-E,   E in array,     (n) in array, 
-    E&&E,   E||E,   E1?E2:E3        V^=E,   V%=E,   V*=E,   V/=E,   V+=E,
-    V-=E,   V=E
-워드
-    BEGIN   delete  END     function    in      printf
-    break   do      exit    getline     next    return
-    continue        else    for         if      print      while
-    
-    
-미리 정의된 변수
-    ARGC        : ARGV 배열 요소의 갯수.
-    ARGV        : command line argument에 대한 배열.
-    CONVFMT     : 문자열을 숫자로 변경할 때 사용할 형식. (ex, "%.6g")
-    ENVIRON     : 환경변수에 대한 배열.
-    FILENAME    : 경로를 포함한 입력 파일 이름.
-    FNR         : 현재 파일에서 현재 레코드의 순서 값.
-    FS          : 필드 구분 문자. (기본 값 = space)
-    NF          : 현재 레코드에 있는 필드의 갯수.
-    NR          : 입력 시작 점에서 현재 레코드의 순서 값.
-    OFMT        : 문자열을 출력할 때 사용할 형식.
-    OFS         : 결과 출력 시 필드 구분 문자. (기본 값 = space)
-    ORS         : 결과 출력 시 레코드 구분 문자. (기본 값 = newline)
-    RLENGTH     : match 함수에 의해 매칭된 문자열의 길이.
-    RS          : 레코드 구분 문자. (기본 값 = newline)
-    RSTART      : match 함수에 의해 매칭된 문자열의 시작 위치.
-    
-사용 가능한 함수
+> **OPTION**
+* _-F : 필드 구분 문자 지정_
+* _-f : awk program 파일 경로 지정_
+* _-v : awk program에서 사용될 특정 variable값 지정_
+
+<br/>
+
+> **awk program**
+* _pattern {action} 형태_
+    * _patern을 생략하면 : "모든 레코드" 적용_
+    * _action을 생략하면 : "print" 적용_
+
+<br/>
+
+> **awk program language**
+* _표현식_
+```
+    (E)    $n     ++E    --E    E++    E--    E^E    !E     +E      V-=E
+    -E     E*E    E/E    E%E    E+E    E-E    E E    E<E    E<=E    V=E
+    E!=E   E==E   E>E    E>=E   E~E    E!-E   E in array     (n) in array 
+    E&&E   E||E   E1?E2:E3      V^=E   V%=E   V*=E   V/=E   V+=E
+```
+* _키워드_
+```
+    BEGIN    delete      END       function     in          printf     break      do      print
+    exit     getline     next      return       continue    else       for        if      while
+```
+* _미리 정의 된 변수_
+```
+    ARGC        : ARGV 배열 요소의 갯수
+    ARGV        : command line argument에 대한 배열
+    CONVFMT     : 문자열을 숫자로 변경할 때 사용할 형식 (ex, "%.6g")
+    ENVIRON     : 환경변수에 대한 배열
+    FILENAME    : 경로를 포함한 입력 파일 이름
+    FNR         : 현재 파일에서 현재 레코드의 순서 값
+    FS          : 필드 구분 문자 (기본 값 = space)
+    NF          : 현재 레코드에 있는 필드의 갯수
+    NR          : 입력 시작 점에서 현재 레코드의 순서 값
+    OFMT        : 문자열을 출력할 때 사용할 형식
+    OFS         : 결과 출력 시 필드 구분 문자 (기본 값 = space)
+    ORS         : 결과 출력 시 레코드 구분 문자 (기본 값 = newline)
+    RLENGTH     : match 함수에 의해 매칭된 문자열의 길이
+    RS          : 레코드 구분 문자 (기본 값 = newline)
+    RSTART      : match 함수에 의해 매칭된 문자열의 시작 위치
+```
+* _사용 가능한 함수_
+```
 Arithmetic Functions :
     atan2(y,x),     cos(x),     sin(x),     exp(x),     log(x),     sqrt(x),
     int(x),         rand(),     srand([expr])
@@ -87,9 +88,14 @@ String Functions :
 Input/Output and General Functions :
     close(expression),          getline                 getline var
     system(expression)
-    
-    
-    |awk 사용 예시|명령어 옵션|
+```    
+
+<br/>
+
+> **awk 사용 예시**
+
+
+|예시|명령어 옵션|
 |-|-|
 |파일의 전체 내용 출력	|awk '{ print }' [FILE]|
 |필드 값 출력	|awk '{ print $1 }' [FILE]|

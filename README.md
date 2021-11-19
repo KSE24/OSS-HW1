@@ -26,7 +26,8 @@ int getopt(int argc, char * const argv[], const char *optstring);
 - _optind : 인덱스 값으로 파일 이름과 같은 추가적인 매개변수를 받는 경우 이 값을 사용하며, getopt 함수는 한번 호출될때마다 이 값을 업데이트 함_
 - _opterr : 옵션에 문제가 있다면 이 값은 0이 아닌 값이 되며 getopt 함수가 메세지를 표시함_
 - _optopt : 알 수 없는 옵션을 받는 경우 해당 옵션은 여기에 들어가며 getopt의 리턴값은 ‘?’가 됨_
-
+ 
+<br/>
 
 ## 2. getopts
 ```

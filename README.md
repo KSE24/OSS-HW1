@@ -102,7 +102,7 @@ awk [OPTION] [awk program] [ARGUMENT]
 ```
 (E)    $n     ++E    --E    E++    E--    E^E    !E     +E      V-=E
 -E     E*E    E/E    E%E    E+E    E-E    E E    E<E    E<=E    V=E
-E!=E   E==E   E>E    E>=E   E~E    E!-E   E in array     (n) in array 
+E!=E   E==E   E>E    E>=E   E~E    E!-E   E in array    (n) in array 
 E&&E   E||E   E1?E2:E3      V^=E   V%=E   V*=E   V/=E   V+=E
 ```
 * _키워드_

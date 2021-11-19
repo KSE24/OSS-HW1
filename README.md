@@ -1,4 +1,4 @@
-# OSS-HW1
+# [20203266김수은] 오픈소스SW개론 첫번째 과제
 
 ## 1. getopt
 ```
@@ -7,8 +7,8 @@ getopt [options] [--] optstring parameters
 getopt [options] -o|--options optstring [options] [--] parameters
 ```
 > **명령어의 옵션을 분석, 파악할 수 있도록 도와주는 함수**
-- _<unistd.h> 헤더파일 필요함_
-- _--output와 같은 긴 옵션을 사용하기 위해서는 getoptlong함수를 이용함_
+- _<unistd.h> 헤더 파일 필요함_
+- _--output와 같은 긴 옵션을 사용하기 위해서는 getoptlong 함수를 이용함_
  
 <br/>
 
@@ -16,28 +16,26 @@ getopt [options] -o|--options optstring [options] [--] parameters
 ```c
 int getopt(int argc, char * const argv[], const char *optstring);
 ```
-- _getopt 함수의 argc와 argv는 main 함수가 받은 값을 그대로 전달받고, 세번째인자인 optstring은 옵션을 전달함_
+- _getopt 함수의 argc와 argv는 main 함수가 받은 값을 그대로 전달받고, optstring은 옵션을 전달함_
 - _옵션을 발견하였다면 해당 옵션의 아스키코드 값을 반환하고, 만약 옵션을 발견하지 못했다면 EOF(-1)을 반환함_
  
 <br/>
 
 > **getopt() 함수와 관련된 전역 변수**
 - _optarg : 옵션 뒤에 별도의 매개변수가 오는 경우 optarg에 저장함_
-- _optind : 인덱스 값으로 파일 이름과 같은 추가적인 매개변수를 받는 경우 이 값을 사용하며, getopt 함수는 한번 호출될때마다 이 값을 업데이트 함_
-- _opterr : 옵션에 문제가 있다면 이 값은 0이 아닌 값이 되며 getopt 함수가 메세지를 표시함_
-- _optopt : 알 수 없는 옵션을 받는 경우 해당 옵션은 여기에 들어가며 getopt의 리턴값은 ‘?’가 됨_
+- _optind : 인덱스 값으로 파일 이름과 같은 추가적인 매개변수를 받는 경우 이 값을 사용하며, getopt 함수는 한번 호출될 때마다 이 값을 업데이트함_
+- _opterr : 옵션에 문제가 있다면 이 값은 0이 아닌 값이 되며 getopt 함수가 메시지를 표시함_
+- _optopt : 알 수 없는 옵션을 받는 경우 해당 옵션은 여기에 들어가며 getopt 함수의 리턴 값은 ‘?’가 됨_
  
 <br/>
 
 ## 2. getopts
 ```
-getopts optstring optname [arg]
+getopts optstring name [arg]
 ```
-> **getopt의 bash버전**
+> **getopt() 함수의 bash 버전**
 
-
-
-
+<br/>
 
 ## 3. sed
 ```
@@ -46,7 +44,7 @@ sed [OPTION] {script-only-if-no-other-script} [input-file]
 > **텍스트를 필터링, 변형하기 위한 스트림 에디터**
 - _수정, 치환, 삭제, 추가 등 편집기 기능_
 - _파일을 인자로 받아 명령어를 통해 작업_
-- _원본이 손상, 변형 되지 않음_
+- _원본이 손상, 변형되지 않음_
 
 <br/>
 
@@ -88,7 +86,7 @@ awk [OPTION] [awk program] [ARGUMENT]
 > **OPTION**
 * _-F : 필드 구분 문자 지정_
 * _-f : awk program 파일 경로 지정_
-* _-v : awk program에서 사용될 특정 variable값 지정_
+* _-v : awk program에서 사용될 특정 variable 값 지정_
 
 <br/>
 

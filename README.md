@@ -1,4 +1,4 @@
-# [20203266김수은] 오픈소스SW개론 첫번째 과제
+# [20203266 김수은] 오픈소스SW개론 첫번째 과제
 
 ## 1. getopt
 ```
@@ -47,7 +47,7 @@ getopts optstring name [arg]
 > **전역 변수의 활용**
 * _getopts 함수는 호출될 때마다 optind에서 처리될 다음 인수의 인덱스를 배치하며, 쉘이 호출될 때마다 optind는 1로 초기화됨_
 * _옵션이 +로 시작되는 경우 name의 값 앞에 추가_
-* _OptionString의 문자 뒤에 :(콜론)이 오면 옵션에 인수가 있는 것으로 간주되어 이를 optarg에 배치함_
+* _OptionString의 문자 뒤에 :(콜론)이 오면 옵션에 인수가 있는 것으로 간주하여 이를 optarg에 배치함_
  
 <br/>
 
@@ -75,7 +75,7 @@ sed [OPTION] {script-only-if-no-other-script} [input-file]
 * _-e : sed 명령어를 사용하였을 때 출력되는 값을 보여줌_
 * _-i : 변경되는 값을 출력 없이 바로 저장_
 * _-n : 특정 값의 행만 출력_
-* _-f : 스크립트를 파일로부터 읽어들여서 명령어로 지정_
+* _-f : 스크립트를 파일로부터 읽어 들여서 명령어로 지정_
 
 <br/>
 
@@ -135,20 +135,20 @@ exit     getline     next      return       continue    else       for        if
 ```
 * _미리 정의 된 변수_
 ```
-ARGC : ARGV 배열 요소의 갯수
+ARGC : ARGV 배열 요소의 개수
 ARGV : command line argument에 대한 배열
 CONVFMT : 문자열을 숫자로 변경할 때 사용할 형식 (ex, "%.6g")
 ENVIRON : 환경변수에 대한 배열
 FILENAME : 경로를 포함한 입력 파일 이름
 FNR : 현재 파일에서 현재 레코드의 순서 값
-FS : 필드 구분 문자 (기본 값 = space)
-NF : 현재 레코드에 있는 필드의 갯수
+FS : 필드 구분 문자 (기본값 = space)
+NF : 현재 레코드에 있는 필드의 개수
 NR : 입력 시작 점에서 현재 레코드의 순서 값
 OFMT : 문자열을 출력할 때 사용할 형식
-OFS : 결과 출력 시 필드 구분 문자 (기본 값 = space)
-ORS : 결과 출력 시 레코드 구분 문자 (기본 값 = newline)
+OFS : 결과 출력 시 필드 구분 문자 (기본값 = space)
+ORS : 결과 출력 시 레코드 구분 문자 (기본값 = newline)
 RLENGTH : match 함수에 의해 매칭된 문자열의 길이
-RS : 레코드 구분 문자 (기본 값 = newline)
+RS : 레코드 구분 문자 (기본값 = newline)
 RSTART : match 함수에 의해 매칭된 문자열의 시작 위치
 ```
 * _사용 가능한 함수_
@@ -175,7 +175,7 @@ Input/Output and General Functions : close(expression), getline, getline var sys
 |특정 필드 값 비교를 통해 선택된 레코드만 출력|awk '$1 == 10 { print $2 }' file|
 |특정 필드들의 합 구하기|awk '{sum += $3} END { print sum }' file|
 |여러 필드들의 합 구하기|awk '{ for (i=2; i<=NF; i++) total += $i }; END { print "TOTAL : "total }' file|
-|레코드 단위로 필드 합 및 평균 값 구하기|awk '{ sum = 0 } {sum += ($3+$4+$5) } { print $0, sum, sum/3 }' file|
+|레코드 단위로 필드 합 및 평균값 구하기|awk '{ sum = 0 } {sum += ($3+$4+$5) } { print $0, sum, sum/3 }' file|
 |필드에 연산을 수행한 결과 출력하기|awk '{print $1, $2, $3+2, $4, $5}' file|
 |레코드 또는 필드의 문자열 길이 검사|awk ' length($0) > 20' file|
 |파일에 저장된 awk program 실행|awk -f awkfile file|
